@@ -1,81 +1,91 @@
-# 🛍️ Usfa Mart — Node.js Website
+# USFA MART Node.js Store
 
-A full-featured home decor & daily essentials store built with Node.js + Express + EJS.
+Ready-to-run Node.js / Express e-commerce storefront for **USFA MART**.
 
-## 📁 Project Structure
+## Included
 
-```
-usfa-mart/
-├── server.js              ← Main server (Express)
-├── package.json
-├── data/
-│   └── products.js        ← Product catalog
-├── views/
-│   ├── index.ejs          ← Home page
-│   ├── shop.ejs           ← All products + search + filter
-│   ├── product.ejs        ← Single product detail
-│   ├── cart.ejs           ← Shopping cart
-│   ├── contact.ejs        ← Contact form
-│   ├── 404.ejs            ← 404 page
-│   └── partials/
-│       ├── header.ejs
-│       ├── footer.ejs
-│       └── product-card.ejs
-└── public/
-    ├── css/style.css
-    └── js/main.js
-```
+- USFA MART logo added in `public/assets/usfa-logo.png`
+- Red, yellow, green, blue and black UI theme inspired by the logo
+- 40 product listings in `data/products.json`
+- Prices set Rs. 10–20 lower than the market sample price field
+- Category filters, search, cart drawer and product details
+- WhatsApp quick order per product
+- Cart checkout through WhatsApp
+- Store WhatsApp: `03711734502`
+- Store address: `16 A Al Jannat homes Kahna Lahore`
 
-## 🚀 Setup & Run
+## Run locally
 
-### Step 1: Install Node.js
-Download from https://nodejs.org (LTS version)
-
-### Step 2: Install dependencies
 ```bash
-cd usfa-mart
 npm install
-```
-
-### Step 3: Configure WhatsApp Number
-Open `public/js/main.js` and change line 2:
-```js
-const WHATSAPP_NUMBER = '923001234567'; // Your number (92 + 10 digits, no +)
-```
-
-Also update the number in `views/partials/footer.ejs`.
-
-### Step 4: Start the server
-```bash
-npm start
-```
-
-Then open: **http://localhost:3000**
-
-For development with auto-restart:
-```bash
-npm install -g nodemon
 npm run dev
 ```
 
-## ✅ Features
+Open:
 
-- 🏠 **Home page** with hero banner & featured products
-- 🛍️ **Shop page** with search & category filter
-- 📦 **Product detail** page with related products
-- 🛒 **Shopping cart** (localStorage-based, no login needed)
-- 💬 **WhatsApp integration** — order via WhatsApp with auto-filled message
-- 💰 **Cash on Delivery** checkout with WhatsApp confirmation
-- 📬 **Contact form**
-- 📱 **Fully responsive** for mobile
+```text
+http://localhost:3000
+```
 
-## 🎨 Customization
+## Configure store details
 
-### Add your own products
-Edit `data/products.js` — add/remove/edit items.
+Copy `.env.example` to `.env`:
 
-### Change colors
-Edit CSS variables in `public/css/style.css` (`:root` block at the top).
+```bash
+cp .env.example .env
+```
 
-### Add more pages
-Create a new `.ejs` file in `views/` and add a route in `server.js`.
+Edit these values:
+
+```env
+STORE_NAME=USFA MART
+WHATSAPP_NUMBER=923711734502
+STORE_ADDRESS=16 A Al Jannat homes Kahna Lahore
+PORT=3000
+```
+
+Important: WhatsApp number must be in international format without `+`. Example: `923711734502`.
+
+## Edit products
+
+Open:
+
+```text
+data/products.json
+```
+
+Each product has:
+
+```json
+{
+  "title": "Product name",
+  "category": "Kitchen & Dining",
+  "price": 1180,
+  "competitorPrice": 1200,
+  "compareAt": 1450,
+  "description": "Product description"
+}
+```
+
+For real selling, replace placeholder descriptions and icons with your own supplier photos and final stock prices.
+
+## Deploy
+
+### Vercel
+
+1. Create a GitHub repo and upload this folder.
+2. Open Vercel and import the GitHub repo.
+3. Add environment variables from `.env.example`.
+4. Deploy.
+
+### Render
+
+1. Create a new Web Service.
+2. Connect your GitHub repo.
+3. Build command: `npm install`
+4. Start command: `npm start`
+5. Add environment variables and deploy.
+
+## Notes
+
+Product images from other websites are not copied. Use your own supplier photos to avoid copyright and branding issues.
